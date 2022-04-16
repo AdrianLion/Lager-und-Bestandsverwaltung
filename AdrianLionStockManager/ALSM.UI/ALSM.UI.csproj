@@ -16,4 +16,12 @@
     <Folder Include="Models\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Include="..\.editorconfig" Link=".editorconfig" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ALSM.UI.Library\ALSM.UI.Library.csproj" />
+  </ItemGroup>
+
 </Project>

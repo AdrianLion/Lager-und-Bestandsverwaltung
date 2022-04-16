@@ -5,9 +5,18 @@ VisualStudioVersion = 17.0.32126.317
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "ALSMData", "ALSMData\ALSMData.sqlproj", "{83BB1939-EFA0-4E1E-944B-35CBA9BCF63A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALSM.UI", "ALSM.UI\ALSM.UI.csproj", "{D3251EC0-D973-463E-9773-7DE8AA96968B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ALSM.UI", "ALSM.UI\ALSM.UI.csproj", "{D3251EC0-D973-463E-9773-7DE8AA96968B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALSM.DataManager", "ALSM.DataManager\ALSM.DataManager.csproj", "{9C5289BB-C598-4229-8A3F-BF74CAC3F021}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ALSM.DataManager", "ALSM.DataManager\ALSM.DataManager.csproj", "{9C5289BB-C598-4229-8A3F-BF74CAC3F021}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{760ADF51-6F17-4F5A-8B8B-957CFFC6D338}"
+	ProjectSection(SolutionItems) = preProject
+		.editorconfig = .editorconfig
+	EndProjectSection
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ALSM.UI.Library", "ALSM.UI.Library\ALSM.UI.Library.csproj", "{F71C711B-C6D8-40C1-A738-A0498FD21165}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ALSM.DataManager.Library", "ALSM.DataManager.Library\ALSM.DataManager.Library.csproj", "{6D10FDFA-EB89-4D43-B8A3-AB9C68C21111}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,6 +38,14 @@ Global
 		{9C5289BB-C598-4229-8A3F-BF74CAC3F021}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C5289BB-C598-4229-8A3F-BF74CAC3F021}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C5289BB-C598-4229-8A3F-BF74CAC3F021}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F71C711B-C6D8-40C1-A738-A0498FD21165}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F71C711B-C6D8-40C1-A738-A0498FD21165}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F71C711B-C6D8-40C1-A738-A0498FD21165}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F71C711B-C6D8-40C1-A738-A0498FD21165}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6D10FDFA-EB89-4D43-B8A3-AB9C68C21111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6D10FDFA-EB89-4D43-B8A3-AB9C68C21111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6D10FDFA-EB89-4D43-B8A3-AB9C68C21111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6D10FDFA-EB89-4D43-B8A3-AB9C68C21111}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

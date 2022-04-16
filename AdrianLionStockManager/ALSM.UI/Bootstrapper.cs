@@ -1,4 +1,6 @@
-﻿using ALSM.UI.ViewModels;
+﻿using ALSM.UI.Library.Api;
+using ALSM.UI.Library.Models;
+using ALSM.UI.ViewModels;
 using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
@@ -22,8 +24,10 @@ namespace ALSM.UI
             _container = new SimpleContainer();
 
             _container.Singleton<IWindowManager, WindowManager>()
-                .Singleton<IEventAggregator, EventAggregator>();
-
+                .Singleton<IEventAggregator, EventAggregator>()
+                .Singleton<ICurrentUserModel, CurrentUserModel>()
+                .Singleton<IApiAuthenticator, ApiAuthenticator>();
+            
             GetType().Assembly.GetTypes()
                 .Where(t => t.IsClass)
                 .Where(t => t.Name.EndsWith("ViewModel"))

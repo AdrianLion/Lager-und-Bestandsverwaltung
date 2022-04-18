@@ -14,7 +14,7 @@ namespace ALSM.UI.Library.Api
     public class ApiAuthenticator : IApiAuthenticator
     {
         private HttpClient _apiClient;
-        private ICurrentUserModel _currentUser;
+        private readonly ICurrentUserModel _currentUser;
 
         public ApiAuthenticator(ICurrentUserModel currentUser)
         {

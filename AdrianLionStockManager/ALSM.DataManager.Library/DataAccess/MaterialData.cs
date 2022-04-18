@@ -1,5 +1,4 @@
-﻿
-using ALSM.DataManager.Library.Internal.DataAccess;
+﻿using ALSM.DataManager.Library.Internal.DataAccess;
 using ALSM.DataManager.Library.Models;
 using Microsoft.Extensions.Configuration;
 using System;
@@ -10,25 +9,20 @@ using System.Threading.Tasks;
 
 namespace ALSM.DataManager.Library.DataAccess
 {
-    public class UserData : IUserData
+    public class MaterialData : IMaterialData
     {
         private readonly IConfiguration _config;
         private readonly SqlDataAccess _sql;
 
-        public UserData(IConfiguration config)
+        public MaterialData(IConfiguration config)
         {
             _config = config;
             _sql = new SqlDataAccess(_config);
         }
-        public List<UserModel> GetUserById(string Id)
+
+        public List<MaterialModel> GetMaterials()
         {
-            
-
-            var p = new { Id = Id };
-
-            var result = _sql.Load<UserModel, dynamic>("dbo.spUser_GetById", p);
-
-            return result;
+            return _sql.Load<MaterialModel, dynamic>("dbo.spMaterial_GetAll", new { });
         }
     }
 }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace ALSM.UI.Library.Api
 {
-    public interface IApiAuthenticator
+    public interface IApiHelper
     {
         HttpClient ApiClient { get; }
         void LogOffUser();

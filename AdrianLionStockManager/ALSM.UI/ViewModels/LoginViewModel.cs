@@ -1,4 +1,5 @@
-﻿using ALSM.UI.Library.Api;
+﻿using ALSM.UI.EventModels;
+using ALSM.UI.Library.Api;
 using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
@@ -13,10 +14,10 @@ namespace ALSM.UI.ViewModels
     {
         private string _userName = "noidem33@gmail.com";
         private string _password;
-        private readonly IApiAuthenticator _apiAuthenticator;
+        private readonly IApiHelper _apiAuthenticator;
         private readonly IEventAggregator _events;
 
-        public LoginViewModel(IApiAuthenticator apiAuthenticator, IEventAggregator events)
+        public LoginViewModel(IApiHelper apiAuthenticator, IEventAggregator events)
         {
             _apiAuthenticator = apiAuthenticator;
             _events = events;
@@ -62,6 +63,8 @@ namespace ALSM.UI.ViewModels
                 var result = await _apiAuthenticator.Authenticate(UserName, Password);
 
                 await _apiAuthenticator.GetCurrentUserInfo(result.AccessToken);
+
+                await _events.PublishOnUIThreadAsync(new LogOnEvent());
 
             }
             catch (Exception)

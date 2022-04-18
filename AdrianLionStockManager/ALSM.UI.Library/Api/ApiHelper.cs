@@ -11,12 +11,12 @@ using System.Threading.Tasks;
 
 namespace ALSM.UI.Library.Api
 {
-    public class ApiAuthenticator : IApiAuthenticator
+    public class ApiHelper : IApiHelper
     {
         private HttpClient _apiClient;
         private readonly ICurrentUserModel _currentUser;
 
-        public ApiAuthenticator(ICurrentUserModel currentUser)
+        public ApiHelper(ICurrentUserModel currentUser)
         {
             InitializeClient();
             _currentUser = currentUser;

@@ -1,6 +1,8 @@
 ﻿using ALSM.UI.Library.Api;
 using ALSM.UI.Library.Models;
+using ALSM.UI.Models;
 using ALSM.UI.ViewModels;
+using AutoMapper;
 using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
@@ -13,20 +15,35 @@ namespace ALSM.UI
 {
     public class Bootstrapper : BootstrapperBase
     {
-        private SimpleContainer _container;
+        private SimpleContainer _container = new SimpleContainer();
 
         public Bootstrapper()
         {
             Initialize();
         }
+        private IMapper ConfigureAutomapper()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                cfg.CreateMap<MaterialModel, MaterialDisplayModel>();
+            });
+            var result = config.CreateMapper();
+            return result;
+        }
         protected override void Configure()
         {
-            _container = new SimpleContainer();
+            _container.Instance(ConfigureAutomapper());
+
+            _container.Instance(_container)
+                .PerRequest<IMaterialEndpoint, MaterialEndpoint>();
+
+
+
 
             _container.Singleton<IWindowManager, WindowManager>()
                 .Singleton<IEventAggregator, EventAggregator>()
                 .Singleton<ICurrentUserModel, CurrentUserModel>()
-                .Singleton<IApiAuthenticator, ApiAuthenticator>();
+                .Singleton<IApiHelper, ApiHelper>();
             
             GetType().Assembly.GetTypes()
                 .Where(t => t.IsClass)

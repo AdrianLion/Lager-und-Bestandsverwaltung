@@ -41,6 +41,7 @@ namespace ALSM.DataManager
             services.AddControllersWithViews();
 
             services.AddScoped<IUserData, UserData>();
+            services.AddScoped<IMaterialData, MaterialData>();
 
             services.AddAuthentication(options =>
             {

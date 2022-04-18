@@ -15,6 +15,7 @@ using System.Threading.Tasks;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using Microsoft.OpenApi.Models;
+using ALSM.DataManager.Library.DataAccess;
 
 namespace ALSM.DataManager
 {
@@ -38,6 +39,8 @@ namespace ALSM.DataManager
             services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             services.AddControllersWithViews();
+
+            services.AddScoped<IUserData, UserData>();
 
             services.AddAuthentication(options =>
             {

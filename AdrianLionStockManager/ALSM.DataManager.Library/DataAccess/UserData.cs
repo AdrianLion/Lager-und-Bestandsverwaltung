@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace ALSM.DataManager.Library.DataAccess
 {
-    public class UserData
+    public class UserData : IUserData
     {
         private readonly IConfiguration _config;
 

@@ -4,6 +4,6 @@
     [Name] NVARCHAR(100) NOT NULL, 
     [Description] NVARCHAR(MAX) NOT NULL, 
     [QuantityInStock] INT NOT NULL, 
-    [CreatedDate] DATETIME2 NOT NULL, 
-    [LastModified] DATETIME2 NOT NULL
+    [CreatedDate] DATETIME2 NOT NULL DEFAULT GETUTCDATE(), 
+    [LastModified] DATETIME2 NOT NULL DEFAULT GETUTCDATE()
 )

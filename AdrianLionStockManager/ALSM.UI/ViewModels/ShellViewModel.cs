@@ -22,7 +22,7 @@ namespace ALSM.UI.ViewModels
 
         public Task HandleAsync(LogOnEvent message, CancellationToken cancellationToken)
         {
-            ActivateItemAsync(IoC.Get<MaterialViewModel>());
+            ActivateItemAsync(IoC.Get<MaterialViewModel>(),cancellationToken);
             return Task.CompletedTask;
         }
     }

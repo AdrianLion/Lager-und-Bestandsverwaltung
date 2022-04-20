@@ -1,5 +1,5 @@
 ﻿using ALSM.UI.Library.Api;
-using ALSM.UI.Models;
+using ALSM.UI.Library.Models;
 using AutoMapper;
 using Caliburn.Micro;
 using System;
@@ -15,6 +15,7 @@ namespace ALSM.UI.ViewModels
         private readonly IWindowManager _window;
         private readonly IMaterialEndpoint _materialEndpoint;
         private readonly IMapper _mapper;
+        private Dictionary<int,string> _materialDescriptions;
 
         public MaterialViewModel(IWindowManager window, IMaterialEndpoint materialEndpoint,
             IMapper mapper)
@@ -23,7 +24,6 @@ namespace ALSM.UI.ViewModels
             _materialEndpoint = materialEndpoint;
             _mapper = mapper;
         }
-
         protected override async void OnViewLoaded(object view)
         {
             await LoadMaterials();
@@ -31,14 +31,14 @@ namespace ALSM.UI.ViewModels
 
         private async Task LoadMaterials()
         {
-            var materialList = await _materialEndpoint.GetAll();
-            var materials = _mapper.Map<List<MaterialDisplayModel>>(materialList);
-            Materials = new BindableCollection<MaterialDisplayModel>(materials);
+            var materials = await _materialEndpoint.GetAll();
+            _materialDescriptions = materials.ToDictionary(x => x.Id, x => x.Description);
+            Materials = new BindableCollection<MaterialModel>(materials);
         }
 
-        private BindableCollection<MaterialDisplayModel> _materials;
+        private BindableCollection<MaterialModel> _materials;
 
-        public BindableCollection<MaterialDisplayModel> Materials
+        public BindableCollection<MaterialModel> Materials
         {
             get { return _materials; }
             set
@@ -47,6 +47,36 @@ namespace ALSM.UI.ViewModels
                 NotifyOfPropertyChange(() => Materials);
             }
         }
+
+        private MaterialModel _selectedMaterial;
+
+        public MaterialModel SelectedMaterial
+        {
+            get { return _selectedMaterial; }
+            set
+            {
+                _selectedMaterial = value;
+                NotifyOfPropertyChange(() => SelectedMaterial);
+            }
+        }
+
+        public async void SaveChanges()
+        {
+            var result = new List<MaterialModel>();
+            foreach (var item in Materials)
+            {
+                if (_materialDescriptions.ContainsKey(item.Id) && _materialDescriptions[item.Id] != item.Description)
+                {
+                    result.Add(item);
+                }
+            }
+
+            await _materialEndpoint.Update(result);
+            
+
+
+        }
+
         // TODO add some way of displaying the description since it can be long and should not be displayed fully in the datagrid
 
     }

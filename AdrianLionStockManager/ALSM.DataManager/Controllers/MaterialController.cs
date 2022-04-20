@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace ALSM.DataManager.Controllers
 {
@@ -23,6 +24,13 @@ namespace ALSM.DataManager.Controllers
         {
             
             return _materialData.GetMaterials();
+        }
+
+        [Route("/api/Material/Update")]
+        [HttpPost]
+        public void Update(List<MaterialModel> materials)
+        {
+            _materialData.UpdateDescriptions(materials);
         }
     }
 }

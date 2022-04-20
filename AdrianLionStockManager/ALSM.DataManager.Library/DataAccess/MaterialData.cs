@@ -24,5 +24,21 @@ namespace ALSM.DataManager.Library.DataAccess
         {
             return _sql.Load<MaterialModel, dynamic>("dbo.spMaterial_GetAll", new { });
         }
+        public void UpdateDescriptions(List<MaterialModel> materials)
+        {
+            foreach (var item in materials)
+            {
+                dynamic p = new
+                {
+                    Id = item.Id,
+                    Name = item.Name,
+                    Description = item.Description,
+                    QuantityInStock = item.QuantityInStock,
+                    CreatedDate = item.CreatedDate
+                };
+                _sql.Save("dbo.spMaterial_Update", p);
+            }
+
+        }
     }
 }

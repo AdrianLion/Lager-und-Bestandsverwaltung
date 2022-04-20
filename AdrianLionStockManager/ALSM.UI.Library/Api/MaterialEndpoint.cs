@@ -33,5 +33,19 @@ namespace ALSM.UI.Library.Api
                 }
             }
         }
+        public async Task Update(List<MaterialModel> materials)
+        {
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("/api/Material/Update", materials))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+                    
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
     }
 }

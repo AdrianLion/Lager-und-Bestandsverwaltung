@@ -6,5 +6,6 @@ namespace ALSM.DataManager.Library.DataAccess
     public interface IMaterialData
     {
         List<MaterialModel> GetMaterials();
+        void UpdateDescriptions(List<MaterialModel> materials);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using ALSM.UI.Library.Api;
 using ALSM.UI.Library.Models;
-using ALSM.UI.Models;
+//using ALSM.UI.Models;
 using ALSM.UI.ViewModels;
 using AutoMapper;
 using Caliburn.Micro;
@@ -25,7 +25,7 @@ namespace ALSM.UI
         {
             var config = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<MaterialModel, MaterialDisplayModel>();
+                //cfg.CreateMap<MaterialModel, MaterialDisplayModel>();
             });
             var result = config.CreateMapper();
             return result;

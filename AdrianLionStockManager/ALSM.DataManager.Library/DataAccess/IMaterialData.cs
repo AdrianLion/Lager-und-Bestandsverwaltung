@@ -7,5 +7,6 @@ namespace ALSM.DataManager.Library.DataAccess
     {
         List<MaterialModel> GetMaterials();
         void UpdateDescriptions(List<MaterialModel> materials);
+        void AddMaterial(MaterialModel material);
     }
 }

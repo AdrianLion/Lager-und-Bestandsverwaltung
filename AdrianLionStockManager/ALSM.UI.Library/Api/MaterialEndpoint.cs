@@ -17,9 +17,25 @@ namespace ALSM.UI.Library.Api
         {
             _apiHelper = apiHelper;
         }
+
+        public async Task Add(MaterialModel material)
+        {
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.PostAsJsonAsync("/api/Material/Add", material))
+            {
+                if (response.IsSuccessStatusCode)
+                {
+
+                }
+                else
+                {
+                    throw new Exception(response.ReasonPhrase);
+                }
+            }
+        }
+
         public async Task<List<MaterialModel>> GetAll()
         {
-            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/Material"))
+            using (HttpResponseMessage response = await _apiHelper.ApiClient.GetAsync("/api/Material/GetAll"))
             {
                 if (response.IsSuccessStatusCode)
                 {

@@ -25,5 +25,19 @@ namespace ALSM.UI.ViewModels
             ActivateItemAsync(IoC.Get<MaterialViewModel>(),cancellationToken);
             return Task.CompletedTask;
         }
+
+        public void Material()
+        {
+            ActivateItemAsync(IoC.Get<MaterialViewModel>());
+        }
+        public void Inventory()
+        {
+            ActivateItemAsync(IoC.Get<InventoryViewModel>());
+        }
+        public void Order()
+        {
+            ActivateItemAsync(IoC.Get<OrderViewModel>());
+        }
+
     }
 }

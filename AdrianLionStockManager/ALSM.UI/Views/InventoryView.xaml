@@ -1,0 +1,24 @@
+﻿<UserControl x:Class="ALSM.UI.Views.InventoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:ALSM.UI.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <DataGrid AutoGenerateColumns="False"
+                      IsReadOnly="True"
+                      Name="Inventory"
+                      IsSynchronizedWithCurrentItem="True">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
+                <DataGridTextColumn Header="Material Id" Binding="{Binding Name}"/><!-- TODO -->
+                <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
+                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Purchase Price" Binding="{Binding CreatedDate}"/>
+                <DataGridTextColumn Header="Purchase Date" Binding="{Binding LastModified}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+    </Grid>
+</UserControl>

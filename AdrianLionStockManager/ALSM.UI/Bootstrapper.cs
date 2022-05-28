@@ -1,5 +1,6 @@
 ﻿using ALSM.UI.Library.Api;
 using ALSM.UI.Library.Models;
+using ALSM.UI.Models;
 //using ALSM.UI.Models;
 using ALSM.UI.ViewModels;
 using AutoMapper;
@@ -25,7 +26,8 @@ namespace ALSM.UI
         {
             var config = new MapperConfiguration(cfg =>
             {
-                //cfg.CreateMap<MaterialModel, MaterialDisplayModel>();
+                cfg.CreateMap<MaterialModel, MaterialDisplayModel>();
+                cfg.CreateMap<OrderModel, OrderDisplayModel>();
             });
             var result = config.CreateMapper();
             return result;
@@ -35,7 +37,8 @@ namespace ALSM.UI
             _container.Instance(ConfigureAutomapper());
 
             _container.Instance(_container)
-                .PerRequest<IMaterialEndpoint, MaterialEndpoint>();
+                .PerRequest<IMaterialEndpoint, MaterialEndpoint>()
+                .PerRequest<IInventoryEndpoint, InventoryEndpoint>();
 
 
 

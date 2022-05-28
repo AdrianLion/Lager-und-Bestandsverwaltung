@@ -77,6 +77,8 @@
     <Build Include="dbo\Stored Procedures\spUser_GetById.sql" />
     <Build Include="dbo\Stored Procedures\spMaterial_GetAll.sql" />
     <Build Include="dbo\Stored Procedures\spMaterial_Update.sql" />
+    <Build Include="dbo\Stored Procedures\spInventory_GetAll.sql" />
+    <Build Include="dbo\Stored Procedures\spMaterial_Insert.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="ALSMData.refactorlog" />

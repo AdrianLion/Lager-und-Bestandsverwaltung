@@ -59,7 +59,7 @@ namespace ALSM.UI.ViewModels
                 NotifyOfPropertyChange(() => SelectedMaterial);
             }
         }
-
+        
         public async void SaveChanges()
         {
             var result = new List<MaterialModel>();
@@ -77,7 +77,10 @@ namespace ALSM.UI.ViewModels
 
         }
 
-        // TODO add some way of displaying the description since it can be long and should not be displayed fully in the datagrid
+        public void AddNewMaterial()
+        {
+            _window.ShowWindowAsync(IoC.Get<CreateMaterialViewModel>());
+        }
 
     }
 }

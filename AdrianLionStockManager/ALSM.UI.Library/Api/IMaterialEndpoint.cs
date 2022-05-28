@@ -8,5 +8,6 @@ namespace ALSM.UI.Library.Api
     {
         Task<List<MaterialModel>> GetAll();
         Task Update(List<MaterialModel> materials);
+        Task Add(MaterialModel material);
     }
 }

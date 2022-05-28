@@ -19,8 +19,9 @@ namespace ALSM.DataManager.Controllers
         {
             _materialData = materialData;
         }
+        [Route("/api/Material/GetAll")]
         [HttpGet]
-        public List<MaterialModel> Get()
+        public List<MaterialModel> GetAll()
         {
             
             return _materialData.GetMaterials();
@@ -32,5 +33,13 @@ namespace ALSM.DataManager.Controllers
         {
             _materialData.UpdateDescriptions(materials);
         }
+
+        [Route("/api/Material/Add")]
+        [HttpPost]
+        public void Add(MaterialModel material)
+        {
+            _materialData.AddMaterial(material);
+        }
+
     }
 }

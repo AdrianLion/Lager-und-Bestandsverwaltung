@@ -20,6 +20,16 @@ namespace ALSM.DataManager.Library.DataAccess
             _sql = new SqlDataAccess(_config);
         }
 
+        public void AddMaterial(MaterialModel material)
+        {
+            dynamic p = new
+            {
+                Name = material.Name,
+                Description = material.Description,
+            };
+            _sql.Save("dbo.spMaterial_Insert", p);
+        }
+
         public List<MaterialModel> GetMaterials()
         {
             return _sql.Load<MaterialModel, dynamic>("dbo.spMaterial_GetAll", new { });

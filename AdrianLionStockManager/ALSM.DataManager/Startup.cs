@@ -43,6 +43,7 @@ namespace ALSM.DataManager
             services.AddScoped<IUserData, UserData>();
             services.AddScoped<IMaterialData, MaterialData>();
             services.AddScoped<IInventoryData, InventoryData>();
+            services.AddScoped<IOrderData, OrderData>();
 
             services.AddAuthentication(options =>
             {

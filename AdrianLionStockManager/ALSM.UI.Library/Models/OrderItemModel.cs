@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ALSM.UI.Library.Models
 {
-    public class OrderModel
+    public class OrderItemModel
     {
         public int Quantity { get; set; }
         public decimal Price { get; set; }

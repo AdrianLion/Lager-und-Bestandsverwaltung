@@ -27,7 +27,7 @@ namespace ALSM.UI
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<MaterialModel, MaterialDisplayModel>();
-                cfg.CreateMap<OrderModel, OrderDisplayModel>();
+                cfg.CreateMap<OrderItemModel, OrderItemDisplayModel>();
             });
             var result = config.CreateMapper();
             return result;
@@ -38,7 +38,8 @@ namespace ALSM.UI
 
             _container.Instance(_container)
                 .PerRequest<IMaterialEndpoint, MaterialEndpoint>()
-                .PerRequest<IInventoryEndpoint, InventoryEndpoint>();
+                .PerRequest<IInventoryEndpoint, InventoryEndpoint>()
+                .PerRequest<IOrderEndpoint, OrderEndpoint>();
 
 
 

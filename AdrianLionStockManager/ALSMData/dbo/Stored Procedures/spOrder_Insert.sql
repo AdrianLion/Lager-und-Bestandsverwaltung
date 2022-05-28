@@ -1,0 +1,8 @@
+﻿CREATE PROCEDURE [dbo].[spOrder_Insert]
+	@userId NVARCHAR(128)
+AS
+BEGIN
+	INSERT INTO [Order]
+	VALUES (@userId);
+	SELECT SCOPE_IDENTITY();
+END

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ALSM.UI.Models
 {
-    public class OrderDisplayModel : INotifyPropertyChanged
+    public class OrderItemDisplayModel : INotifyPropertyChanged
     {
 
         private int _quantity;

@@ -12,10 +12,11 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" Orientation="Horizontal">
-            <Button x:Name="Material" Content="Material Overview"/>
-            <Button x:Name="Inventory" Content="Inventory Overview"/>
-            <Button x:Name="Order" Content="Orders"/>
+        <StackPanel Name="Navigation" Visibility="Hidden"
+                    Grid.Row="0" Orientation="Horizontal">
+            <Button x:Name="Material" Content="Materialstamm" />
+            <Button x:Name="Inventory" Content="Inventar" />
+            <Button x:Name="Order" Content="Bestellung erfassen" />
         </StackPanel>
         <ContentControl Grid.Row="1" x:Name="ActiveItem"/>
     </Grid>

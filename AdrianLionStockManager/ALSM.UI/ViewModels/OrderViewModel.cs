@@ -15,11 +15,13 @@ namespace ALSM.UI.ViewModels
     public class OrderViewModel : Screen
     {
         private readonly IMaterialEndpoint _materialEndpoint;
+        private readonly IOrderEndpoint _orderEndpoint;
         private readonly IMapper _mapper;
 
-        public OrderViewModel(IMaterialEndpoint materialEndpoint, IMapper mapper)
+        public OrderViewModel(IMaterialEndpoint materialEndpoint, IOrderEndpoint orderEndpoint, IMapper mapper)
         {
             _materialEndpoint = materialEndpoint;
+            _orderEndpoint = orderEndpoint;
             _mapper = mapper;
         }
         protected override async void OnViewLoaded(object view)
@@ -49,9 +51,9 @@ namespace ALSM.UI.ViewModels
             }
         }
 
-        private BindableCollection<OrderDisplayModel> _orderMaterials = new BindableCollection<OrderDisplayModel>();
+        private BindableCollection<OrderItemDisplayModel> _orderMaterials = new BindableCollection<OrderItemDisplayModel>();
 
-        public BindableCollection<OrderDisplayModel> OrderMaterials
+        public BindableCollection<OrderItemDisplayModel> OrderMaterials
         {
             get
             {
@@ -121,7 +123,7 @@ namespace ALSM.UI.ViewModels
                 {
                     priceString = "0";
                 }
-                
+
                 _price = priceString;
                 NotifyOfPropertyChange(() => Price);
                 NotifyOfPropertyChange(() => CanAddOrderItem);
@@ -146,7 +148,7 @@ namespace ALSM.UI.ViewModels
         }
         public void AddOrderItem()
         {
-            OrderDisplayModel? existingOrder = OrderMaterials
+            OrderItemDisplayModel? existingOrder = OrderMaterials
                 .FirstOrDefault(x => x.Material == SelectedMaterial && x.Price == Decimal.Parse(Price));
 
             if (existingOrder is not null && existingOrder.Price == Decimal.Parse(Price))
@@ -155,7 +157,7 @@ namespace ALSM.UI.ViewModels
             }
             else
             {
-                OrderMaterials.Add(new OrderDisplayModel
+                OrderMaterials.Add(new OrderItemDisplayModel
                 {
                     Material = SelectedMaterial,
                     Quantity = Quantity,
@@ -178,9 +180,21 @@ namespace ALSM.UI.ViewModels
                 return OrderMaterials.Count > 0;
             }
         }
-        public void CreateOrder()
+        public async void CreateOrder()
         {
-
+            var materialOrders = new List<MaterialOrderModel>();
+            foreach (var item in OrderMaterials)
+            {
+                materialOrders.Add(new MaterialOrderModel()
+                {
+                    OrderId = default,
+                    InventoryId = default,
+                    MaterialId = item.Material.Id,
+                    PurchasePrice = item.Price,
+                    Quantity = item.Quantity
+                });
+            }
+            await _orderEndpoint.Add(materialOrders);
         }
 
     }

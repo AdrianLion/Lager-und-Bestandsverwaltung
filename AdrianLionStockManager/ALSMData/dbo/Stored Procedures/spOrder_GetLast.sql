@@ -1,0 +1,4 @@
+﻿CREATE PROCEDURE [dbo].[spOrder_GetLast]
+AS
+	SELECT IDENT_CURRENT ('Order');
+RETURN 0

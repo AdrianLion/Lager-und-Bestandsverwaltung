@@ -4,6 +4,7 @@ using AutoMapper;
 using Caliburn.Micro;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,7 +16,7 @@ namespace ALSM.UI.ViewModels
         private readonly IWindowManager _window;
         private readonly IMaterialEndpoint _materialEndpoint;
         private readonly IMapper _mapper;
-        private Dictionary<int,string> _materialDescriptions;
+        private Dictionary<int, string> _materialDescriptions;
 
         public MaterialViewModel(IWindowManager window, IMaterialEndpoint materialEndpoint,
             IMapper mapper)
@@ -59,7 +60,7 @@ namespace ALSM.UI.ViewModels
                 NotifyOfPropertyChange(() => SelectedMaterial);
             }
         }
-        
+
         public async void SaveChanges()
         {
             var result = new List<MaterialModel>();
@@ -72,7 +73,7 @@ namespace ALSM.UI.ViewModels
             }
 
             await _materialEndpoint.Update(result);
-            
+
 
 
         }

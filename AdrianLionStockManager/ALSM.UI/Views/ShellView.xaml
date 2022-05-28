@@ -12,11 +12,12 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <StackPanel Name="Navigation" Visibility="Hidden"
-                    Grid.Row="0" Orientation="Horizontal">
+        <StackPanel Grid.Row="0" Orientation="Horizontal"
+                    Visibility="{Binding IsLoggedIn, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}">
             <Button x:Name="Material" Content="Materialstamm" />
             <Button x:Name="Inventory" Content="Inventar" />
             <Button x:Name="Order" Content="Bestellung erfassen" />
+            <Button x:Name="LogOut" Content="Log Out" />
         </StackPanel>
         <ContentControl Grid.Row="1" x:Name="ActiveItem"/>
     </Grid>

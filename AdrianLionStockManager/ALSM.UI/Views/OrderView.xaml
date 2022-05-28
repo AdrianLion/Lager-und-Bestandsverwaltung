@@ -26,7 +26,7 @@
                             <TextBlock Text="{Binding Name}"/>
                         </StackPanel>
                         <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="Quantity in Stock: "/>
+                            <TextBlock Text="Im Lager Verfügbar: "/>
                             <TextBlock Text="{Binding QuantityInStock}"/>
                         </StackPanel>
                     </StackPanel>
@@ -50,9 +50,9 @@
                                 <TextBlock Text="{Binding Material.Name}"/>
                             </StackPanel>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock Text="Quantity: "/>
+                                <TextBlock Text="Anzahl: "/>
                                 <TextBlock Text="{Binding Quantity}"/>
-                                <TextBlock Text=" Price per piece: "/>
+                                <TextBlock Text=" Preis pro Stück: "/>
                                 <TextBlock Text="{Binding Path=Price, StringFormat='{}{0:c}'}" />
                                 <TextBlock Text=""/>
                             </StackPanel>
@@ -72,14 +72,15 @@
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
             </Grid.RowDefinitions>
             <StackPanel Grid.Row="1" Orientation="Horizontal">
-                <TextBlock Text="Quantity:" Margin="5"/>
+                <TextBlock Text="Anzahl:" Margin="5"/>
                 <TextBox x:Name="Quantity" Margin="5" MinWidth="50"/>
             </StackPanel>
             <StackPanel Grid.Row="2" Orientation="Horizontal">
-                <TextBlock Text="Purchase price per piece:" Margin="5"/>
+                <TextBlock Text="Stückpreis:" Margin="5"/>
                 <TextBox x:Name="Price" Margin="5" MinWidth="50"/>
             </StackPanel>
 
@@ -87,7 +88,10 @@
                     Content="-->" x:Name="AddOrderItem"
                     MinWidth="80" Margin="5"/>
             <Button Grid.Row="4" HorizontalAlignment="Center"
-                    Content="Create Order" x:Name="CreateOrder"
+                    Content="X" x:Name="RemoveSelectedItems"
+                    MinWidth="80" Margin="5"/>
+            <Button Grid.Row="5" HorizontalAlignment="Center"
+                    Content="Bestellung aufgeben" x:Name="CreateOrder"
                     MinWidth="80" Margin="5"/>
         </Grid>
 

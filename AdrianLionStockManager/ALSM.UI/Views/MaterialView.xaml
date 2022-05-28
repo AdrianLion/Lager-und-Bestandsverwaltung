@@ -8,11 +8,6 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock Text="Suche:" Margin="10"/>
-                <TextBox x:Name="SearchValue" MinWidth="100"
-                         Margin="10"/>
-            </StackPanel>
             <DataGrid AutoGenerateColumns="False"
                       IsReadOnly="True"
                       Name="Materials"
@@ -21,14 +16,21 @@
                 <DataGrid.Columns>
                     <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
                     <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                    <DataGridTextColumn Header="Quantity" Binding="{Binding QuantityInStock}"/>
-                    <DataGridTextColumn Header="Created" Binding="{Binding CreatedDate}"/>
-                    <DataGridTextColumn Header="Modified" Binding="{Binding LastModified}"/>
+                    <DataGridTextColumn Header="Anzahl" Binding="{Binding QuantityInStock}"/>
+                    <DataGridTextColumn Header="Erstellt am" Binding="{Binding CreatedDate}"/>
+                    <DataGridTextColumn Header="Letzte Änderung" Binding="{Binding LastModified}"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <TextBox Text="{Binding SelectedMaterial.Description}"/>
-            <Button x:Name="AddNewMaterial" Content="Add new Material"/>
-            <Button x:Name="SaveChanges" Content="Save"/>
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Column="0" Text="Beschreibung: " Margin="0 0 10 0"/>
+                <TextBox Grid.Column="1" Text="{Binding SelectedMaterial.Description}"/>
+            </Grid>
+            <Button x:Name="AddNewMaterial" Content="Material hinzufügen"/>
+            <Button x:Name="SaveChanges" Content="Speichern"/>
         </StackPanel>
     </Grid>
 </UserControl>

@@ -5,7 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:ALSM.UI.Views"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             d:DesignHeight="450" d:DesignWidth="800"
+             Language="de-DE">
     <Grid>
         <DataGrid AutoGenerateColumns="False"
                       IsReadOnly="True"
@@ -13,11 +14,10 @@
                       IsSynchronizedWithCurrentItem="True">
             <DataGrid.Columns>
                 <DataGridTextColumn Header="Id" Binding="{Binding Id}" />
-                <DataGridTextColumn Header="Material Id" Binding="{Binding Name}"/><!-- TODO -->
                 <DataGridTextColumn Header="Name" Binding="{Binding Name}"/>
-                <DataGridTextColumn Header="Quantity" Binding="{Binding Quantity}"/>
-                <DataGridTextColumn Header="Purchase Price" Binding="{Binding CreatedDate}"/>
-                <DataGridTextColumn Header="Purchase Date" Binding="{Binding LastModified}"/>
+                <DataGridTextColumn Header="Anzahl" Binding="{Binding Quantity}"/>
+                <DataGridTextColumn Header="Kaufpreis" Binding="{Binding Path=PurchasePrice, StringFormat='{}{0:c}'}"/>
+                <DataGridTextColumn Header="Kaufdatum" Binding="{Binding PurchaseDate}"/>
             </DataGrid.Columns>
         </DataGrid>
     </Grid>

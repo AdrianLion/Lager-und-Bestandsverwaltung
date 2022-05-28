@@ -24,6 +24,8 @@
             <TextBox x:Name="UserName"/>
             <TextBlock Text="Password:" Margin="0 5"/>
             <PasswordBox cal:Message.Attach="[Event PasswordChanged] = [Action OnPasswordChanged($source)]"/>
+            <TextBlock Text="Falsche Login Daten" Foreground="Red"
+                       Visibility="{Binding IsWrongLogin, Converter={StaticResource BooleanToVisibilityConverter}, FallbackValue=Collapsed}"/>
             <Button x:Name="Login" Content="Log In" Margin="0 5"/>
         </StackPanel>
     </Grid>

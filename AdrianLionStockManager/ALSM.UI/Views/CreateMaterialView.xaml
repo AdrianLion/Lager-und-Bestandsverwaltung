@@ -32,7 +32,7 @@
                  Margin="5" x:Name="Name"/>
         <TextBox Grid.Row="2" Grid.ColumnSpan="2" x:Name="Description"/>
         <Button Grid.Row="3" Grid.ColumnSpan="2" FontWeight="Bold"
-            Content="Save" Margin="10" x:Name="CreateMaterial"/>
+            Content="Speichern" Margin="10" x:Name="CreateMaterial"/>
 
 
     </Grid>

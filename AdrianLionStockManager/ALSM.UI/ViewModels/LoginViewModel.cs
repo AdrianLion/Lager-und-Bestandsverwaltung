@@ -70,7 +70,18 @@ namespace ALSM.UI.ViewModels
             catch (Exception)
             {
 
-                //TODO display error in UI
+                IsWrongLogin = true;
+            }
+        }
+        private bool _isWrongLogin = false;
+
+        public bool IsWrongLogin
+        {
+            get { return _isWrongLogin; }
+            set
+            {
+                _isWrongLogin = value;
+                NotifyOfPropertyChange(() => IsWrongLogin);
             }
         }
 

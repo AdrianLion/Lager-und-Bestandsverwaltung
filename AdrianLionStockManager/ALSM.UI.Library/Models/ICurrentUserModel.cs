@@ -14,5 +14,7 @@ namespace ALSM.UI.Library.Models
         string FirstName { get; set; }
         string LastName { get; set; }
         DateTime CreatedDate { get; set; }
+
+        void Reset();
     }
 }

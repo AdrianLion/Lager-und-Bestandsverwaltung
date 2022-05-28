@@ -38,7 +38,7 @@ namespace ALSM.UI.ViewModels
                     Quantity = item.Quantity,
                     PurchaseDate = item.PurchaseDate,
                     PurchasePrice = item.PurchasePrice,
-                    Name = materials.Where(x => x.Id == item.Id).First().Name
+                    Name = materials.Where(x => x.Id == item.MaterialId).First().Name
                 });
             }
             Inventory = result;

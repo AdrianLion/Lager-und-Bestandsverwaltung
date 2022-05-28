@@ -165,12 +165,12 @@ namespace ALSM.UI.ViewModels
                 });
 
             }
-            SelectedMaterial.QuantityInStock -= Quantity;
             Quantity = 1;
             Price = "0";
             NotifyOfPropertyChange(() => OrderMaterials);
             NotifyOfPropertyChange(() => Total);
             NotifyOfPropertyChange(() => CanCreateOrder);
+            NotifyOfPropertyChange(() => CanRemoveSelectedItems);
 
         }
         public bool CanCreateOrder
@@ -195,7 +195,23 @@ namespace ALSM.UI.ViewModels
                 });
             }
             await _orderEndpoint.Add(materialOrders);
+            Refresh();
         }
 
+        public bool CanRemoveSelectedItems
+        {
+            get
+            {
+                return OrderMaterials.Count > 0;
+            }
+        }
+        public void RemoveSelectedItems()
+        {
+            OrderMaterials.Clear();
+            NotifyOfPropertyChange(() => OrderMaterials);
+            NotifyOfPropertyChange(() => Total);
+            NotifyOfPropertyChange(() => CanCreateOrder);
+            NotifyOfPropertyChange(() => CanRemoveSelectedItems);
+        }
     }
 }

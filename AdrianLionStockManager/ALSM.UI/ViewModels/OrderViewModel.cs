@@ -142,8 +142,7 @@ namespace ALSM.UI.ViewModels
         {
             get
             {
-                return Quantity > 0 && Decimal.Parse(Price) > 0 && SelectedMaterial != null
-                    && Quantity <= SelectedMaterial.QuantityInStock;
+                return Quantity > 0 && Decimal.Parse(Price) > 0 && SelectedMaterial != null;
             }
         }
         public void AddOrderItem()
